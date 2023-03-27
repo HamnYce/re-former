@@ -1,0 +1,25 @@
+<% unless @user.errors.empty? %>
+  <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li>
+        <%= msg %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @user do |form| %>
+  <%= form.label :username, "current is: #{@user.username}" %>
+  <br>
+  <%= form.text_field :username, placeholder: "john_doe" %>
+  <br>
+  <%= form.label :email, "current is: #{@user.email}" %>
+  <br>
+  <%= form.text_field :email, placeholder: "example@example.com" %>
+  <br>
+  <%= form.label :password %>
+  <br>
+  <%= form.password_field :password %>
+  <br>
+  <%= form.submit "Submit Here" %>
+<% end %>
